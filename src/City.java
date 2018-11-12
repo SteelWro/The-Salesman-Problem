@@ -69,7 +69,7 @@ public class City {
         cityN.remove(0);cityX.remove(0);cityY.remove(0);
         cityQuantity--;
         indexSmallestWay--;
-        https://github.com/SteelWro/The-Salesman-Problem.git
+
 
     }
 
