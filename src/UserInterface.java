@@ -22,6 +22,7 @@ public class UserInterface {
 //        }
 
         System.out.println("Od którego miasta chcesz zacząć drogę: ");
-        City.firstCity = scan.next();
+        City.nextCity = scan.next();
+        City.firstCity = City.nextCity;
     }
 }

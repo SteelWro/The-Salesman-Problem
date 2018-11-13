@@ -13,6 +13,7 @@ public class City {
         return instance;
     }
     static String firstCity;
+    static String nextCity;
     static int cityQuantity;
     int cityOrderIndex = 0;
     String shortestCityName = "";
@@ -26,7 +27,6 @@ public class City {
     List<String> cityOrder;
 
     City(){
-
        names = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","R","S","T","U","W","V","Y","Z","X"};
        cityX = new ArrayList<Double>();
        cityY = new ArrayList<Double>();
@@ -49,7 +49,7 @@ public class City {
         }
 
         if(cityQuantity>1){
-            firstCity = cityN.get(indexSmallestWay);
+            nextCity = cityN.get(indexSmallestWay);
         }
 
         cityOrder.add(toString());
@@ -60,20 +60,23 @@ public class City {
     }
 
     void swapCity(){
-        int index = findIndexCity(cityQuantity, firstCity);
+        int index = findIndexCity(cityQuantity, nextCity);
         String tmpN = cityN.get(index); double tmpX = cityX.get(index); double tmpY = cityY.get(index);
         cityN.set(index, cityN.get(0)); cityX.set(index, cityX.get(0)); cityY.set(index, cityY.get(0));
         cityN.set(0,tmpN); cityX.set(0,tmpX); cityY.set(0,tmpY);
     }
 
-    int findIndexCity(int cityQuantity, String firstCity){
+    int findIndexCity(int cityQuantity, String nextCity){
         for(int i=0;i<cityQuantity;i++){
-            if(cityN.get(i).equals(firstCity)) return i;
+            if(cityN.get(i).equals(nextCity)) return i;
         }
         return -1;
     }
 
     public String toString(){
-        return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] ";
+        if(cityQuantity == 2){
+            return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] --> ["+cityN.get(indexSmallestWay)+" - "+firstCity+"] ";
+        }
+        return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] -->";
     }
 }
