@@ -23,6 +23,7 @@ public class UserInterface {
 
         System.out.println("Od którego miasta chcesz zacząć drogę: ");
         City.nextCity = scan.next();
-        City.firstCity = City.nextCity;
+        City.firstCityN = City.nextCity;
+
     }
 }

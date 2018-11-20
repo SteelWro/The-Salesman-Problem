@@ -1,7 +1,4 @@
-import javax.sound.midi.Soundbank;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Stack;
+
 
 public class Main
 {
@@ -14,12 +11,17 @@ public class Main
         int cityQuantity = City.cityQuantity;
         for(int i=1;i<cityQuantity;i++){
             city.swapCity();
+            if(City.flag ==0){
+                City.firstCityX = city.cityX.get(0);
+                City.firstCityY = city.cityY.get(0);
+            }
             city.findShortestWay();
         }
-
+        System.out.print("droga: ");
         for(String cities : city.cityOrder){
             System.out.print(cities);
-        }
 
+        }
+        System.out.println(City.entirelengthWay);
     }
 }

@@ -12,7 +12,11 @@ public class City {
         }
         return instance;
     }
-    static String firstCity;
+    static int flag = 0;
+    static double entirelengthWay = 0;
+    static String firstCityN;
+    static Double firstCityX;
+    static Double firstCityY;
     static String nextCity;
     static int cityQuantity;
     int cityOrderIndex = 0;
@@ -41,10 +45,11 @@ public class City {
             double way;
             way = sqrt(pow((cityX.get(0) - cityX.get(i)), 2) + pow((cityY.get(0) - cityY.get(i)), 2));
 
-            if(way<lengthSmallestWay) {
+            if(way < lengthSmallestWay) {
                 lengthSmallestWay = way;
                 shortestCityName = cityN.get(i);
                 indexSmallestWay = i;
+                entirelengthWay += lengthSmallestWay;
             }
         }
 
@@ -57,6 +62,9 @@ public class City {
         cityN.remove(0);cityX.remove(0);cityY.remove(0);
 
         cityQuantity--;indexSmallestWay--;
+        if(cityQuantity == 2){
+            entirelengthWay += sqrt(pow((firstCityX - cityX.get(indexSmallestWay)), 2) + pow((firstCityY - cityY.get(indexSmallestWay)), 2));
+        }
     }
 
     void swapCity(){
@@ -73,9 +81,10 @@ public class City {
         return -1;
     }
 
+
     public String toString(){
         if(cityQuantity == 2){
-            return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] --> ["+cityN.get(indexSmallestWay)+" - "+firstCity+"] ";
+            return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] --> ["+cityN.get(indexSmallestWay)+" - "+firstCityN+"] ";
         }
         return " ["+cityN.get(0)+" - "+cityN.get(indexSmallestWay)+"] -->";
     }
